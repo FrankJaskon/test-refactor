@@ -1,18 +1,15 @@
 import { MouseEvent, useCallback, useState } from 'react'
 import { User } from '../../../globals'
 import { receiveRandomUser } from '../../../fragments'
-import { UseUserInfoProps } from './use-user-info.interfaces'
+import { UseUserInfo } from './use-user-info.interfaces'
+import { useThrottle } from '../../../shared'
 
-export const UseUserInfo: UseUserInfoProps = () => {
+export const useUserInfo: UseUserInfo = () => {
   const [item, setItem] = useState<User | undefined>(undefined)
   const [loading, setLoading] = useState(false)
-
-  const handleGetUserClick = useCallback(async (
-    event: MouseEvent<HTMLButtonElement>,
-  ) => {
-    event.stopPropagation()
+  const getUser = useCallback(async () => {
+    setLoading(true)
     try {
-      setLoading(true)
       const user = await receiveRandomUser()
       setItem(user)
     } catch (e) {
@@ -21,6 +18,14 @@ export const UseUserInfo: UseUserInfoProps = () => {
       setLoading(false)
     }
   }, [])
+
+  const throttledReceiveRandomUser = useThrottle(getUser, 2000)
+
+  const handleGetUserClick = useCallback(
+    (event: MouseEvent<HTMLButtonElement>) => {
+      event.stopPropagation()
+      throttledReceiveRandomUser()
+  }, [throttledReceiveRandomUser])
 
   return {
     user: item,

@@ -13,6 +13,7 @@ export default [
   {
     rules: {
       'no-async-promise-executor': 0,
+      '@typescript-eslint/no-explicit-any': 1,
       'max-len': [2, { code: 80 }],
       'semi': [2, 'never'],
       'comma-dangle': [2, 'always-multiline'],

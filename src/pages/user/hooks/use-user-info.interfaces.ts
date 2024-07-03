@@ -7,4 +7,4 @@ type UseUserInfoReturnedType = {
   loading: boolean
 }
 
-export type UseUserInfoProps = () => UseUserInfoReturnedType
+export type UseUserInfo = () => UseUserInfoReturnedType
