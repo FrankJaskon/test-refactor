@@ -1,4 +1,6 @@
-import { MouseEvent, useCallback, useState } from 'react'
+import { MouseEvent } from 'react'
+import { useState } from 'react'
+import { useCallback } from 'react'
 import { User } from '../../../globals'
 import { receiveRandomUser } from '../../../fragments'
 import { UseUserInfo } from './use-user-info.interfaces'

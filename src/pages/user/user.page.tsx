@@ -1,4 +1,5 @@
-import React, { memo } from 'react'
+import React from 'react'
+import { memo } from 'react'
 import { Button } from '../../ui'
 import { UserInfo } from '../../fragments'
 import { useUserInfo } from './hooks'

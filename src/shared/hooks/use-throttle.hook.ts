@@ -1,4 +1,6 @@
-import { useState, useRef, useCallback } from 'react'
+import { useState } from 'react'
+import { useRef } from 'react'
+import { useCallback } from 'react'
 import { UseThrottle } from './use-throttle.interfaces'
 
 export const useThrottle: UseThrottle = (func, limit) => {
